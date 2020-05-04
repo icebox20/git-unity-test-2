@@ -8,8 +8,10 @@ on:
 jobs:
     merge:
         runs-on: windows-latest
+        
         steps:
         - uses: actions/checkout@v2
+          
         - name: Run a multi-line script
         run: |
           echo Add other actions to build,
