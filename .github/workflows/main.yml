@@ -23,6 +23,7 @@ jobs:
         git checkout develop
         git branch
         git merge william
+        git status
 
     - name: Push changes
       uses: ad-m/github-push-action@master
