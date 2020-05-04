@@ -1,0 +1,16 @@
+name: merge user into master
+
+on:
+  push:
+      branches:
+        -william
+
+jobs:
+    merge:
+        runs-on: windows-latest
+        steps:
+        - uses: actions/checkout@v2
+        - name: Run a multi-line script
+        run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
