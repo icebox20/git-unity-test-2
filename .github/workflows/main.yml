@@ -16,6 +16,13 @@ jobs:
     - uses: actions/checkout@v2
       with:
         ref: master
+
+    -name: Install UnityYAMLMerge
+      run: |
+        git config merge.tool unityyamlmerge
+        git config mergetool.unityyamlmerge.trustExitCode false
+        git config merge.unityyamlmerge.cmd '<$GITHUB_WORKSPACE/git-unity-test-2/.github/workflows/UnityYAMLMerge.exe>'  merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+      shell: bash
         
     - name: Run a multi-line script
       run: |
