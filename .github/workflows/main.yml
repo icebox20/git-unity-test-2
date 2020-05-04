@@ -19,7 +19,7 @@ jobs:
     - name: Run a multi-line script
       run: |
         git fetch 
-        git checkout 
+        git checkout william
         git checkout develop
         git branch
         git merge william
