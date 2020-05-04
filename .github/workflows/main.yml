@@ -17,7 +17,7 @@ jobs:
       with:
         ref: master
 
-    -name: Install UnityYAMLMerge
+    - name: Install UnityYAMLMerge
       run: |
         git config merge.tool unityyamlmerge
         git config mergetool.unityyamlmerge.trustExitCode false
