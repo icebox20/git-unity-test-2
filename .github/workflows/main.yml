@@ -17,10 +17,16 @@ jobs:
     - uses: actions/checkout@v2
       with: 
         ref: 'william'
+        clean: 'false'
+
+    - uses: actions/checkout@v2
+      with: 
+        ref: 'devlop'
+        clean: 'false'
         
     - name: Run a multi-line script
       run: |
-        git checkout devlop
+        git checkout origin/devlop
         git branch
         git merge william
         git push
