@@ -26,6 +26,7 @@ jobs:
         git branch
         git merge ${GITHUB_REF##*/}
         git status
+      shell: bash
 
     - name: Push changes
       uses: ad-m/github-push-action@master
