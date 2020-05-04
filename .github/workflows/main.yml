@@ -15,12 +15,11 @@ jobs:
     steps:
 
     - uses: actions/checkout@v2
-      with: 
-        ref: 'william'
         
     - name: Run a multi-line script
       run: |
         git fetch 
+        git checkout 
         git checkout develop
         git branch
         git merge william
