@@ -3,7 +3,6 @@ name: Merge
 on:
   push:
     branches: 
-      - master
       - william
 
 jobs:
@@ -19,10 +18,10 @@ jobs:
     - name: Run a multi-line script
       run: |
         git fetch 
-        git checkout william
+        git checkout $GITHUB_REF
         git checkout develop
         git branch
-        git merge william
+        git merge $GITHUB_REF
         git status
 
     - name: Push changes
