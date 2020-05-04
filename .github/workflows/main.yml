@@ -19,9 +19,9 @@ jobs:
 
     - name: Install UnityYAMLMerge
       run: |
-        ls
+        dir
         cd $GITHUB_WORKSPACE!\.github\workflows\
-        ls
+        dir
         git config --local merge.tool unityyamlmerge
         git config --local mergetool.unityyamlmerge.trustExitCode false
         git config --local merge.unityyamlmerge.cmd '<${GITHUB_WORKSPACE}/.github/workflows/UnityYAMLMerge.exe>'  merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
