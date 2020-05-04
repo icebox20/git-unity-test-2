@@ -21,7 +21,7 @@ jobs:
     - name: Run a multi-line script
       run: |
         git fetch 
-        git checkout devlop
+        git checkout develop
         git branch
         git merge william
         git push
