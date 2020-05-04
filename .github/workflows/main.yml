@@ -19,5 +19,5 @@ jobs:
     - name: Run a multi-line script
       run: |
         git checkout master
-        git merge william
-        git push orgin/master
+        git merge origin/william
+        git push origin/master
