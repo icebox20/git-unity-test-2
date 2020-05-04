@@ -20,7 +20,8 @@ jobs:
         
     - name: Run a multi-line script
       run: |
-        git checkout origin devlop
+        git fetch 
+        git checkout devlop
         git branch
         git merge william
         git push
