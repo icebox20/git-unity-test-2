@@ -20,11 +20,11 @@ jobs:
     - name: Run a multi-line script
       run: |
         git fetch 
-        git checkout $GITHUB_REF
-        echo "$GITHUB_REF"
+        git checkout ${GITHUB_REF##*/}
+        echo ${GITHUB_REF##*/}
         git checkout develop
         git branch
-        git merge $GITHUB_REF
+        git merge ${GITHUB_REF##*/}
         git status
 
     - name: Push changes
