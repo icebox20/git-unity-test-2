@@ -3,7 +3,7 @@ name: merge user into master
 on:
   push:
       branches:
-        -william
+        - william
 
 jobs:
     merge:
