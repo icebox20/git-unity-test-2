@@ -23,5 +23,8 @@ jobs:
         git checkout develop
         git branch
         git merge william
-        git commit -a -m "test merge"
-        git push
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
