@@ -19,9 +19,10 @@ jobs:
 
     - name: Install UnityYAMLMerge
       run: |
-        git config merge.tool unityyamlmerge
-        git config mergetool.unityyamlmerge.trustExitCode false
-        git config merge.unityyamlmerge.cmd '<$GITHUB_WORKSPACE/git-unity-test-2/.github/workflows/UnityYAMLMerge.exe>'  merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+        git config --local merge.tool unityyamlmerge
+        git config --local mergetool.unityyamlmerge.trustExitCode false
+        git config --local merge.unityyamlmerge.cmd '<$GITHUB_WORKSPACE/git-unity-test-2/.github/workflows/UnityYAMLMerge.exe>'  merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+        git config --list --show-origin
       shell: bash
         
     - name: Run a multi-line script
