@@ -21,8 +21,10 @@ jobs:
       run: |
         git config --local merge.tool unityyamlmerge
         git config --local mergetool.unityyamlmerge.trustExitCode false
-        git config --local mergetool.unityyamlmerge.cmd ""'<D:/a/git-unity-test-2/git-unity-test-2/.github/workflows/UnityYAMLMerge.exe>'  merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"""
+        git config --local mergetool.unityyamlmerge.cmd "'<${{ github.workspace }}/.github/workflows/UnityYAMLMerge.exe>'  merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED""
         git config --list --show-origin
+      shell: bash
+
         
     - name: Run a multi-line script
       run: |
@@ -34,11 +36,6 @@ jobs:
         git merge ${GITHUB_REF##*/}
         git status
       shell: bash
-
-    - name: Merging
-      run: |
-        git mergetool --tool=unityyamlmerge
-        dir
 
     - name: Push changes
       uses: ad-m/github-push-action@master
