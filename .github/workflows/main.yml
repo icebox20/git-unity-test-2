@@ -35,6 +35,10 @@ jobs:
         git status
       shell: bash
 
+    - name: Run a multi-line script
+      run: |
+        git mergetool --tool=unityyamlmerge
+
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
