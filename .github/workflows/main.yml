@@ -39,7 +39,7 @@ jobs:
 
     - name: YAML Merge
       run: |
-        git merge ${GITHUB_REF##*/}
+        git merge ${{ github.ref }}
         git status
         git mergetool --tool=unityyamlmerge
         dir
