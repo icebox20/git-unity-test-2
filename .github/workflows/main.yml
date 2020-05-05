@@ -21,7 +21,7 @@ jobs:
       run: |
         git config --local merge.tool unityyamlmerge
         git config --local mergetool.unityyamlmerge.trustExitCode false
-        git config --local mergetool.unityyamlmerge.cmd "'<D:/a/git-unity-test-2/git-unity-test-2/.github/workflows/UnityYAMLMerge.exe>'  merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED""
+        git config --local mergetool.unityyamlmerge.cmd "'<D:/a/git-unity-test-2/git-unity-test-2/.github/workflows/UnityYAMLMerge.exe>'  merge -p `"`$BASE`" `"`$REMOTE`" `"`$LOCAL`" `"`$MERGED"
         git config --list --show-origin
         
     - name: Run a multi-line script
