@@ -12,7 +12,7 @@ jobs:
     runs-on: windows-latest
 
     continue-on-error: true
-    
+
     steps:
 
     - uses: actions/checkout@v2
@@ -37,7 +37,9 @@ jobs:
       shell: bash
 
     - name: Normal Merge
-      run: git merge ${{ github.ref }}
+      run: |
+      git merge ${{ github.ref }}
+      git status
 
     - name: YAML Merge
       run: |
