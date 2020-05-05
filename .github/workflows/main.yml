@@ -19,14 +19,11 @@ jobs:
 
     - name: Install UnityYAMLMerge
       run: |
-        dir
-        cd ${{ github.workspace }}\.github\workflows\
-        dir
         git config --local merge.tool unityyamlmerge
         git config --local mergetool.unityyamlmerge.trustExitCode false
-        git config --list --show-origin
         git config --local mergetool.unityyamlmerge.cmd "'<${{ github.workspace }}/.github/workflows/UnityYAMLMerge.exe>'  merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED""
         git config --list --show-origin
+      shell: bash
 
         
     - name: Run a multi-line script
