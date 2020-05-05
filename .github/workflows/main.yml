@@ -23,20 +23,24 @@ jobs:
         git config --local mergetool.unityyamlmerge.trustExitCode false
         git config --local mergetool.unityyamlmerge.cmd "'<D:/a/git-unity-test-2/git-unity-test-2/.github/workflows/UnityYAMLMerge.exe>'  merge -p `"`$BASE`" `"`$REMOTE`" `"`$LOCAL`" `"`$MERGED"
         git config --list --show-origin
+
+    - uses: oleksiyrudenko/gha-git-credentials@v1
+      with:
+        token: '${{ secrets.GITHUB_TOKEN }}'
         
-    - name: Run a multi-line script
+    - name: Fetch and Checkout
       run: |
         git fetch 
         git checkout ${GITHUB_REF##*/}
         echo ${GITHUB_REF##*/}
         git checkout develop
         git branch
-        git merge ${GITHUB_REF##*/}
-        git status
       shell: bash
 
     - name: YAML Merge
       run: |
+        git merge ${GITHUB_REF##*/}
+        git status
         git mergetool --tool=unityyamlmerge
         dir
 
