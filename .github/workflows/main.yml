@@ -35,6 +35,8 @@ jobs:
         echo ${GITHUB_REF##*/}
         git checkout develop
         git branch
+        cd /d/a/git-unity-test-2/git-unity-test-2/.github/workflows
+        ls
       shell: bash
 
     - name: YAML Merge
