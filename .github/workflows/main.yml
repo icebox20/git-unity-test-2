@@ -46,7 +46,6 @@ jobs:
         git status
 
     - name: YAML Merge
-      if: ${{ failure() }}
       run: |
         git mergetool --tool=unityyamlmerge
         pwd
@@ -54,7 +53,6 @@ jobs:
       shell: bash
 
     - name: Upload Artifacts
-      if: ${{ failure() }}
       uses: actions/upload-artifact@v1
       with:
           name: mergeConflicts
