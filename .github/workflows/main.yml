@@ -47,8 +47,8 @@ jobs:
         dir
 
     - name: Upload Artifacts
-        uses: actions/upload-artifact@v1
-        with:
+      uses: actions/upload-artifact@v1
+      with:
           name: mergeConflicts
           path: .github\workflows\mergeConflicts.txt
 
