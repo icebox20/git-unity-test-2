@@ -21,7 +21,7 @@ jobs:
       run: |
         git config --local merge.tool unityyamlmerge
         git config --local mergetool.unityyamlmerge.trustExitCode false
-        git config --local mergetool.unityyamlmerge.cmd "'<D:/a/git-unity-test-2/git-unity-test-2/.github/workflows/UnityYAMLMerge.exe>'  merge -p -o mergeConflicts.txt `"`$BASE`" `"`$REMOTE`" `"`$LOCAL`" `"`$MERGED"
+        git config --local mergetool.unityyamlmerge.cmd "'<${{ github.workspace }}/.github/workflows/UnityYAMLMerge.exe>'  merge -p -o mergeConflicts.txt `"`$BASE`" `"`$REMOTE`" `"`$LOCAL`" `"`$MERGED"
         git config --list --show-origin
 
     - uses: oleksiyrudenko/gha-git-credentials@v1
@@ -37,6 +37,7 @@ jobs:
         git branch
         cd /d/a/git-unity-test-2/git-unity-test-2/.github/workflows
         ls
+        pwd
       shell: bash
 
     - name: YAML Merge
@@ -44,6 +45,7 @@ jobs:
         git merge ${{ github.ref }}
         git status
         git mergetool --tool=unityyamlmerge
+      shell: bash
 
     - name: Upload Artifacts
       if: ${{ failure() }}
