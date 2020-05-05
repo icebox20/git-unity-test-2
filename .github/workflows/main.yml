@@ -36,7 +36,9 @@ jobs:
         git checkout develop
         git branch
         cd D:/a/git-unity-test-2/git-unity-test-2/.github/workflows
+        pwd
         ls
+        ./UnityYAMLMerge.exe
       shell: bash
 
     - name: YAML Merge
