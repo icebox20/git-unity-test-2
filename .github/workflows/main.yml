@@ -38,8 +38,8 @@ jobs:
 
     - name: Normal Merge
       run: |
-      git merge ${{ github.ref }}
-      git status
+        git merge ${{ github.ref }}
+        git status
 
     - name: YAML Merge
       run: |
