@@ -49,6 +49,7 @@ jobs:
       run: git mergetool --tool=unityyamlmerge --no-prompt
 
     - name: Upload Artifacts
+      if: ${{ failure() }}
       uses: actions/upload-artifact@v1
       with:
           name: mergeConflicts
