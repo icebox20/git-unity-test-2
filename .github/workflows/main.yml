@@ -4,6 +4,9 @@ on:
   push:
     branches: 
       - william
+      - andy
+      - angus
+      - johnny
 
 jobs:
 
