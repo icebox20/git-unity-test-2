@@ -46,11 +46,7 @@ jobs:
         git status
 
     - name: YAML Merge
-      run: |
-        git mergetool --tool=unityyamlmerge
-        pwd
-        ls
-      shell: bash
+      run: git mergetool --tool=unityyamlmerge
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v1
