@@ -38,6 +38,7 @@ jobs:
     - name: Merging
       run: |
         git mergetool --tool=unityyamlmerge
+        dir
 
     - name: Push changes
       uses: ad-m/github-push-action@master
