@@ -42,8 +42,10 @@ jobs:
         git status
 
     - name: YAML Merge
+      run: git mergetool --tool=unityyamlmerge --no-prompt
+
+    - name: Commit
       run: |
-        git mergetool --tool=unityyamlmerge --no-prompt
         git commit -m "Automatic Merge with UnityYAMLMerge"
         git status
 
