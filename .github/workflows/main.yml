@@ -40,11 +40,17 @@ jobs:
         pwd
       shell: bash
 
-    - name: YAML Merge
+    - name: Normal Merge
       run: |
         git merge ${{ github.ref }}
         git status
+
+    - name: YAML Merge
+      if: ${{ failure() }}
+      run: |
         git mergetool --tool=unityyamlmerge
+        pwd
+        ls
       shell: bash
 
     - name: Upload Artifacts
