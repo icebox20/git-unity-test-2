@@ -6,6 +6,7 @@ on:
       - william
       - andy
       - angus
+      - johnny
 
 jobs:
 
