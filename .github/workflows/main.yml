@@ -4,6 +4,8 @@ on:
   push:
     branches: 
       - william
+      - andy
+      - angus
 
 jobs:
 
