@@ -22,7 +22,7 @@ jobs:
         git config --local merge.tool unityyamlmerge
         git config --local mergetool.unityyamlmerge.trustExitCode true
         git config --local mergetool.unityyamlmerge.cmd "'${{ github.workspace }}\.github\workflows\UnityYAMLMerge.exe'  merge -p -o ${{ github.workspace }}\mergeConflicts.txt `"`$BASE`" `"`$REMOTE`" `"`$LOCAL`" `"`$MERGED"
-        git config --list --show-origin
+    
     - uses: oleksiyrudenko/gha-git-credentials@v1
       with:
         token: '${{ secrets.GITHUB_TOKEN }}'
@@ -31,20 +31,21 @@ jobs:
       run: |
         git fetch 
         git checkout ${GITHUB_REF##*/}
-        echo ${GITHUB_REF##*/}
         git checkout develop
-        git branch
-        cd /d/a/git-unity-test-2/git-unity-test-2/.github/workflows
-        ls
-        pwd
       shell: bash
 
     - name: Normal Merge
       run: |
         git merge ${{ github.ref }}
         git status
+
     - name: YAML Merge
       run: git mergetool --tool=unityyamlmerge --no-prompt
+
+    - name: Commit
+      run: |
+        git commit -m "Automatic Merge with UnityYAMLMerge"
+        git status
 
     - name: Upload Artifacts
       if: ${{ failure() }}
