@@ -54,8 +54,21 @@ jobs:
           name: mergeConflicts
           path: mergeConflicts.txt
 
-    - name: Push changes
+    - name: Push Develop
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: 'develop'
+
+    - name: Merge back into User
+      run: |
+        git fetch 
+        git checkout ${GITHUB_REF##*/}
+        git merge develop -X theirs
+      shell: bash
+
+    - name: Push User
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
