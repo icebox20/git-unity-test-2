@@ -78,17 +78,8 @@ jobs:
         branch: ${{ github.ref }}
 
   build:
+
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        projectPath:
-          - ${{ github.workspace }}
-        unityVersion:
-          - 2019.3.13f1
-        targetPlatform:
-          - StandaloneWindows64 # Build a Windows standalone.
-          #- StandaloneWindows64 # Build a Windows 64-bit standalone.
 
     steps:
 
@@ -99,19 +90,17 @@ jobs:
 
       - uses: actions/cache@v1.1.0
         with:
-          path: ${{ matrix.projectPath }}/Library
-          key: Library-${{ matrix.projectPath }}-${{ matrix.targetPlatform }}
-          restore-keys: |
-            Library-${{ matrix.projectPath }}-
-            Library-
+          path: /Library
+          key: Library
+          restore-keys: Library
 
       - uses: webbertakken/unity-builder@2019.3.13f1
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          projectPath: ${{ matrix.projectPath }}
-          unityVersion: ${{ matrix.unityVersion }}
-          targetPlatform: ${{ matrix.targetPlatform }}
+          projectPath: ${{ github.workspace }}
+          unityVersion: 2019.3.13f1
+          targetPlatform: StandaloneWindows64
 
       - uses: actions/upload-artifact@v1
         with:
