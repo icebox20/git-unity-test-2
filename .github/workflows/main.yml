@@ -94,7 +94,7 @@ jobs:
           key: Library
           restore-keys: Library
 
-      - uses: webbertakken/unity-builder@2019.3.13f1
+      - uses: webbertakken/unity-builder@v1
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
