@@ -41,7 +41,7 @@ jobs:
         with:
           args: zip -qq -r build.zip build/StandaloneWindows64
 
-      - run: mv build.zip "Boing Build:${{ github.run.number }} Commit:${{ github.sha }}"
+      - run: mv build.zip "Boing Build:${{ github.run.number }} Commit:${{ github.sha }}.zip"
 
       - name: Upload to Google Drive
         uses: satackey/action-google-drive@v1
