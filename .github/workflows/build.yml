@@ -31,6 +31,8 @@ jobs:
           unityVersion: 2019.3.13f1
           targetPlatform: StandaloneWindows64
 
+      - run: ls ${{ github.workspace }}/build
+
       - uses: actions/upload-artifact@v1
         with:
           name: Build
@@ -38,7 +40,7 @@ jobs:
 
       - uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r ${{ github.workspace }}/zip/${{ github.sha }}.zip ${{ github.workspace }}/build
+          args: zip -qq -r ${{ github.workspace }}/${{ github.sha }}.zip ${{ github.workspace }}/build
 
       - name: Upload to Google Drive
         uses: satackey/action-google-drive@v1
