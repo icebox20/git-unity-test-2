@@ -40,7 +40,7 @@ jobs:
 
       - uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r ${{ github.workspace }}/${{ github.sha }}.zip ${{ github.workspace }}/build
+          args: zip -qq -r ${{ github.workspace }}/build.zip ${{ github.workspace }}/build
 
       - name: Upload to Google Drive
         uses: satackey/action-google-drive@v1
