@@ -40,13 +40,13 @@ jobs:
 
       - uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r ./zip/test.zip build
+          args: zip -qq -r ${{ github.workspace }}/zip/${{ github.sha }}.zip ${{ github.workspace }}/build
 
       - name: Upload to Google Drive
         uses: satackey/action-google-drive@v1
         with:
           skicka-tokencache-json: ${{ secrets.SKICKA_TOKENCACHE_JSON }}
-          upload-from: ./zip/${{ github.sha }}.zip
+          upload-from: ${{ github.workspace }}/zip/${{ github.sha }}.zip
           upload-to: Boing/Builds
           google-client-id: ${{ secrets.GOOGLE_CLIENT_ID }}
           google-client-secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
