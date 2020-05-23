@@ -23,15 +23,13 @@ jobs:
           key: ${{ runner.os }}
           restore-keys: ${{ runner.os }}
 
-      #- uses: webbertakken/unity-builder@v1.0
-      #  env:
-      #    UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-      #  with:
-      #    projectPath: ${{ github.workspace }}
-      #    unityVersion: 2019.3.13f1
-      #    targetPlatform: StandaloneWindows64
-
-      - run: mkdir build
+      - uses: webbertakken/unity-builder@v1.0
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        with:
+          projectPath: ${{ github.workspace }}
+          unityVersion: 2019.3.13f1
+          targetPlatform: StandaloneWindows64
 
       - uses: actions/upload-artifact@v1
         with:
