@@ -1,4 +1,4 @@
-name: Continuous_Integration
+name: Merge
 
 on:
   push:
