@@ -30,7 +30,7 @@ jobs:
           projectPath: ${{ github.workspace }}
           unityVersion: 2019.3.13f1
           targetPlatform: StandaloneWindows64
-          buildName: Boing Build:${{ github.run.number }} Commit:${ GITHUB_SHA::7 }
+          buildName: Boing Build:${{ github.run.number }} Commit:${{ GITHUB_SHA:7 }}
 
 
       - uses: actions/upload-artifact@v1
@@ -43,13 +43,13 @@ jobs:
           args: zip -qq -r build.zip build/StandaloneWindows64
 
 
-      - run: mv build.zip "Boing Build:${{ github.run.number }} Commit:${ GITHUB_SHA::7 }"
+      - run: mv build.zip "Boing Build:${{ github.run.number }} Commit:${{ GITHUB_SHA:7 }}"
 
       - name: Upload to Google Drive
         uses: satackey/action-google-drive@v1
         with:
           skicka-tokencache-json: ${{ secrets.SKICKA_TOKENCACHE_JSON }}
-          upload-from: "Boing Build:${{ github.run.number }} Commit:${ GITHUB_SHA::7 }"
+          upload-from: "Boing Build:${{ github.run.number }} Commit:${{ GITHUB_SHA:7 }}"
           upload-to: Boing/Builds
           google-client-id: ${{ secrets.GOOGLE_CLIENT_ID }}
           google-client-secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
