@@ -77,6 +77,7 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: ${{ github.ref }}
 
+<<<<<<< Updated upstream
 name: Build
 
 on:
@@ -86,6 +87,9 @@ on:
 
 jobs:
   buildForSomePlatforms:
+=======
+build:
+>>>>>>> Stashed changes
     name: Build for ${{ matrix.targetPlatform }} on version ${{ matrix.unityVersion }}
     runs-on: ubuntu-latest
     strategy:
