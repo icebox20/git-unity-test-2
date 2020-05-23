@@ -30,7 +30,7 @@ jobs:
           projectPath: ${{ github.workspace }}
           unityVersion: 2019.3.13f1
           targetPlatform: StandaloneWindows64
-          buildName: Boing Build:${{ github.run.number }} Commit:${{ github.sha }}
+          buildName: Boing Build:GITHUB_RUN_NUMBER Commit:${{ github.sha }}
 
       - uses: actions/upload-artifact@v1
         with:
