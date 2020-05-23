@@ -1,4 +1,4 @@
-name: Conscious Integration
+name: Continuous_Integration
 
 on:
   push:
