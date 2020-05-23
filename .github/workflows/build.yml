@@ -23,13 +23,15 @@ jobs:
           key: ${{ runner.os }}
           restore-keys: ${{ runner.os }}
 
-      - uses: webbertakken/unity-builder@v1.0
-        env:
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        with:
-          projectPath: ${{ github.workspace }}
-          unityVersion: 2019.3.13f1
-          targetPlatform: StandaloneWindows64
+      #- uses: webbertakken/unity-builder@v1.0
+      #  env:
+      #    UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+      #  with:
+      #    projectPath: ${{ github.workspace }}
+      #    unityVersion: 2019.3.13f1
+      #    targetPlatform: StandaloneWindows64
+
+      - run: mkdir build
 
       - uses: actions/upload-artifact@v1
         with:
@@ -38,7 +40,7 @@ jobs:
 
       - uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r ./zip/${{ github.sha }}.zip ./build
+          args: zip -qq -r ./zip/${{ github.sha }}.zip build
 
       - name: Upload to Google Drive
         uses: satackey/action-google-drive@v1
