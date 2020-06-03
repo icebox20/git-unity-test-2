@@ -39,7 +39,7 @@ jobs:
 
       - uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r build.zip build/StandaloneWindows64
+          args: zip -qq -r build.zip build/StandaloneWindows64/
 
       - run: mv build.zip "Boing_Commit_${{ github.sha }}.zip"
 
