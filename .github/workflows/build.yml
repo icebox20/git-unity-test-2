@@ -47,13 +47,13 @@ jobs:
         with:
           args: zip -qq -r build.zip build/StandaloneWindows64/
 
-      - run: mv build.zip "Boing_Build_$GITHUB_RUN_NUMBER_Commit_${{ steps.vars.outputs.sha_short }}.zip"
+      - run: mv build.zip "Boing_Build_${{ github.run_number }}_Commit_${{ steps.vars.outputs.sha_short }}.zip"
 
       - name: Upload to Google Drive
         uses: satackey/action-google-drive@v1
         with:
           skicka-tokencache-json: ${{ secrets.SKICKA_TOKENCACHE_JSON }}
-          upload-from: "Boing_Build_$GITHUB_RUN_NUMBER_Commit_${{ steps.vars.outputs.sha_short }}.zip"
+          upload-from: "Boing_Build_${{ github.run_number }}_Commit_${{ steps.vars.outputs.sha_short }}.zip"
           upload-to: Boing/Builds
           google-client-id: ${{ secrets.GOOGLE_CLIENT_ID }}
           google-client-secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
