@@ -1,8 +1,8 @@
 name: Build
 
 on:
-  push:
-    branches: develop
+  repository_dispatch:
+    types: [start-build]
 
 jobs:
 
