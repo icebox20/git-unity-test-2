@@ -33,7 +33,6 @@ jobs:
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
         with:
-          projectPath: ${{ github.workspace }}
           unityVersion: 2019.3.13f1
           targetPlatform: StandaloneWindows64
           buildName: Boing_Commit_${{ steps.vars.outputs.sha_short }}
@@ -43,11 +42,10 @@ jobs:
           name: Build
           path: build
 
-      - uses: montudor/action-zip@v0.1.0
-        with:
-          args: cd build && zip -qq -r ../build.zip StandaloneWindows64/
-
       - name: Zip Files
+        run: cd build && zip -qq -r ../build.zip StandaloneWindows64/
+
+      - name: Rename Zip Files
         run: mv build.zip "Boing_Build_${{ github.run_number }}_Commit_${{ steps.vars.outputs.sha_short }}.zip"
 
       - name: Upload to Google Drive
