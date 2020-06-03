@@ -11,6 +11,12 @@ jobs:
     runs-on: unity
 
     steps:
+      - name: Declare some variables
+        id: vars
+        shell: bash
+        run: |
+          echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
+          echo "::set-output name=sha_short::$(git rev-parse --short HEAD)"
 
       - uses: actions/checkout@v2
         with:
@@ -30,7 +36,7 @@ jobs:
           projectPath: ${{ github.workspace }}
           unityVersion: 2019.3.13f1
           targetPlatform: StandaloneWindows64
-          buildName: Boing_Build_Commit${{ github.sha }}
+          buildName: Boing_Commit_${{ steps.vars.outputs.sha_short }}
 
       - uses: actions/upload-artifact@v1
         with:
@@ -41,13 +47,13 @@ jobs:
         with:
           args: zip -qq -r build.zip build/StandaloneWindows64/
 
-      - run: mv build.zip "Boing_Commit_${{ github.sha }}.zip"
+      - run: mv build.zip "Boing_Build_${{ github.run.number }}_Commit_${{ steps.vars.outputs.sha_short }}.zip"
 
       - name: Upload to Google Drive
         uses: satackey/action-google-drive@v1
         with:
           skicka-tokencache-json: ${{ secrets.SKICKA_TOKENCACHE_JSON }}
-          upload-from: "Boing_Commit_${{ github.sha }}.zip"
+          upload-from: "Boing_Build_${{ github.run.number }}_Commit_${{ steps.vars.outputs.sha_short }}.zip"
           upload-to: Boing/Builds
           google-client-id: ${{ secrets.GOOGLE_CLIENT_ID }}
           google-client-secret: ${{ secrets.GOOGLE_CLIENT_SECRET }}
