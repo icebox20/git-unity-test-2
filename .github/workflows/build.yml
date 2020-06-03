@@ -45,7 +45,7 @@ jobs:
 
       - uses: montudor/action-zip@v0.1.0
         with:
-          args: zip -qq -r -j build.zip build/StandaloneWindows64/
+          args: cd build && zip -qq -r ../build.zip StandaloneWindows64/
 
       - name: Zip Files
         run: mv build.zip "Boing_Build_${{ github.run_number }}_Commit_${{ steps.vars.outputs.sha_short }}.zip"
